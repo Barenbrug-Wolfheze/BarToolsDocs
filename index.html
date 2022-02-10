@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <title>BarTools Documentation</title>
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="BarTools documentation template">
+    <meta name="author" content="">
+
+    <link rel="shortcut icon" href="assets/images/favicon.ico">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
+          rel='stylesheet' type='text/css'>
+
+    <!-- FontAwesome JS -->
+    <script src="https://use.fontawesome.com/releases/v5.15.1/js/all.js" data-search-pseudo-elements></script>
+
+    <!-- Global CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+
+    <!--     Theme CSS -->
+    <link id="theme-style" rel="stylesheet" href="assets/css/styles.css">
+
+</head>
+
+<body class="body">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow fixed-top">
+    <div class="container">
+
+        <div class="branding">
+            <a class="navbar-brand" href="#">
+                <img src="assets/images/ms-icon-310.png" width="30" height="30"
+                     class="d-inline-block align-top" alt="">
+
+                <span class="text-highlight">Bar</span><span class="text-bold">Tools</span>
+
+            </a>
+            <span class="navbar-text text-muted">
+                <small class="text-muted">Python package developed for Barenbrug Research, Wolfheze</small>
+            </span>
+
+        </div>
+
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+
+                <li>
+                    <a id="github-button" href="https://github.com/ElcovRijswijk/BarTools" target="_blank"
+                       class="btn btn-block btn-social btn-github btn-dark">
+                        <i class="fab fa-github dark">
+                        </i> Check out on Github
+                    </a>
+                </li>
+
+
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<div class="page-wrapper">
+
+
+    <div class="doc-wrapper  my-5">
+        <div class="container">
+            <div id="doc-header" class="doc-header">
+                <h1 class="doc-title"><i class="icon fa fa-paper-plane"></i> v1.0</h1>
+                <div class="meta"><i class="far fa-clock"></i> Last updated: Jun, 1 2021</div>
+            </div>
+            <div class="doc-body row">
+                <div class="doc-content col-md-12 col-12 order-1">
+                    <div class="content-inner">
+                        <section id="download-section" class="doc-section">
+
+                            <h2 class="section-title">Download</h2>
+                            <div class="section-block">
+
+                                <a href="https://github.com/Barenbrug-Wolfheze/BarTools/archive/refs/heads/main.zip"
+                                   class="btn btn-primary" target="_blank"><i class="fas fa-download">
+                                </i> Download source code</a>
+
+
+                            </div>
+
+
+                        </section>
+
+                        <section id="installation-section" class="doc-section ">
+                            <h2 class="section-title">Installation</h2>
+                            <div class="section-block">
+                                <pre><code class="bash col-8">#!/bin/bash
+Install:
+$ cd ../to/your/packages/
+$ pip install git+https://github.com/Barenbrug-Wolfheze/BarTools.git
+
+Check:
+$ Bar.. tab
+Shows all modules.
+
+$ BarWelcome
+-----------
+Hi and thank you for downloading BarTools....
+-----------
+
+Ready to use!</code></pre>
+                            </div>
+                        </section>
+
+
+                        <section id="code-section" class="doc-section">
+
+                            <h2 class="section-title">Tools</h2>
+
+                            <div class="section-block">
+
+                                <!-- Button trigger BarQC -->
+                                <button type="button" class="btn btn-outline-primary btn-lg" data-toggle="modal"
+                                        data-target="#ModalBarQC">
+                                    BarQC
+                                </button>
+                                <!-- Modal -->
+                                <div class="modal fade bd-example-modal-lg" id="ModalBarQC" tabindex="-1"
+                                     role="dialog"
+                                     aria-labelledby="ModalBarmapping_data" aria-hidden="true">
+
+                                    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="ModalBarQC_data">BarQC
+                                                    parameters</h5>
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                            <pre><code class="bash">usage: BarQC [-h] -ss File -id INPUT_DIR -od OUT_DIR -gr GROUP [-su SUFFIX]
+                [-pr PROCESSES] [-lo LOG_FILE] [-ea EMAIL_ADDRESS] [-v]
+
+Description:
+Perform a quality control on raw sequence data to estimate sequence performance.
+For every fq/FASTQ file MD5sum, sequence lane and total reads are calculated
+and outputted to given sample sheet.
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -su SUFFIX, --suffix SUFFIX
+                        Define the suffix of read files. (default: .fq.gz)
+  -pr PROCESSES, --processes PROCESSES
+                        Define the amount of parallel processes. (default: 8)
+  -lo LOG_FILE, --log_file LOG_FILE
+                        Indicate the file path of the log file. (default:
+                        BarQC.log)
+  -ea EMAIL_ADDRESS, --email_address EMAIL_ADDRESS
+                        Indicate personal email address if you want to be
+                        notified when BarQC is finished. (default: None)
+  -v, --version         show tool version number and exit
+
+Required arguments:
+  -ss File, --sample_sheet File
+                        Define the reference file. (default: None)
+  -id INPUT_DIR, --input_dir INPUT_DIR
+                        Define the directory containing the raw sequencing
+                        files. (default: None)
+  -od OUT_DIR, --out_dir OUT_DIR
+                        Define the output directory for statistics. (default:
+                        None)
+  -gr GROUP, --group GROUP
+                        Indicate the group ID. (default: None)
+
+</code></pre>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                                                    Close
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <!-- Button trigger BarMapping -->
+                                <button type="button" class="btn btn-outline-secondary mx-2 btn-lg" data-toggle="modal"
+                                        data-target="#ModalBarmapping">
+                                    BarMapping
+                                </button>
+                                <!-- Modal -->
+                                <div class="modal fade bd-example-modal-lg" id="ModalBarmapping" tabindex="-1"
+                                     role="dialog"
+                                     aria-labelledby="ModalBarmapping_data" aria-hidden="true">
+
+                                    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="ModalBarmapping_data">BarMapping
+                                                    parameters</h5>
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                            <pre><code class="bash">usage: BarMapping [-h] -re REF_FILE -id INPUT_DIR -od OUT_DIR -gr GROUP
+                     [-su SUFFIX] [-pr PROCESSES] [-lo LOG_FILE]
+                     [-bf BED_FILE] [-pa] [-st] [-pl] [-ss]
+                     [-sd STATS_OUT_DIR] [-ea EMAIL_ADDRESS] [-v]
+
+Description:
+Map fq/FASTQ read data to a given reference file using BWA MEM in parallel.
+For every read file, a BAM file, Q20 BAM file and Q20 Read Group BAM file are generated.
+If applied statistics and plots are generated in the given output directory.
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -su SUFFIX, --suffix SUFFIX
+                        Define the suffix of read files. (default: .fq.gz)
+  -pr PROCESSES, --processes PROCESSES
+                        Define the amount of parallel processes. (default: 8)
+  -lo LOG_FILE, --log_file LOG_FILE
+                        Indicate the file path of the log file. (default:
+                        BarMapping.log)
+  -bf BED_FILE, --bed_file BED_FILE
+                        Define the file path to the BED file of pre-defined
+                        regions. (default: None)
+  -pa, --paired         Map reads in paired end mode, make sure files have
+                        correct _F.suffix or _R.suffix. UNFINISHED
+                        (default: False)
+  -st, --statistics     Store statistics in the output/stats directory.
+                        (default: False)
+  -pl, --plots          Generate plots and store in the output/stats
+                        directory. (default: False)
+  -ss, --save_storage   Remove the Q20 directories, for storage
+                        savings.UNFINISHED (default: False)
+  -sd STATS_OUT_DIR, --stats_out_dir STATS_OUT_DIR
+                        Define the output directory for mapping statistics or
+                        plots. (default: None)
+  -ea EMAIL_ADDRESS, --email_address EMAIL_ADDRESS
+                        Indicate personal email address if you want to be
+                        notified when BarMapping is finished. (default: None)
+  -v, --version         show tool version number and exit
+
+Required arguments:
+  -re REF_FILE, --ref_file REF_FILE
+                        Define the reference file. (default: None)
+  -id INPUT_DIR, --input_dir INPUT_DIR
+                        Define the directory containing read fq files.
+                        (default: None)
+  -od OUT_DIR, --out_dir OUT_DIR
+                        Define the output directory for BAM files. (default:
+                        None)
+  -gr GROUP, --group GROUP
+                        Indicate the group ID. (default: None)
+</code></pre>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                                                    Close
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <!-- Button trigger BarGenotype -->
+                                <button type="button" class="btn btn-outline-success mx-2 btn-lg" data-toggle="modal"
+                                        data-target="#ModalBarGenotype">
+                                    BarGenotype
+                                </button>
+                                <!-- Modal -->
+                                <div class="modal fade bd-example-modal-lg" id="ModalBarGenotype" tabindex="-1"
+                                     role="dialog"
+                                     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+
+                                    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="BarGenotype_data">BarGenotype
+                                                    parameters</h5>
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                            <pre><code class="bash">usage: BarGenotype [-h] -re REF_FILE -id INPUT_DIR -od OUT_DIR -gr GROUP
+                      -pd PLOIDY -bf BED_FILE [-su SUFFIX] [-m MEMORY]
+                      [-p PROCESSES] [-bs BATCH_SIZE] [-lo LOG_FILE] [-gv]
+                      [-ba] [-db DB_FOLDER] [-ea EMAIL_ADDRESS] [-v]
+
+Description:
+BarGenotype BAM files using GATK HaplotypeCaller.
+After genotyping GenomicsDB is used to generate one VCF file for all samples.
+Finally SelectVariants is applied, to remove INDELS and low quality SNPs.
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -su SUFFIX, --suffix SUFFIX
+                        Define the suffix of read files. (default: .bam)
+  -m MEMORY, --memory MEMORY
+                        Define the amount of memory in GB. (default: 25)
+  -p PROCESSES, --processes PROCESSES
+                        Define the number of parallel processes. (default: 8)
+  -bs BATCH_SIZE, --batch_size BATCH_SIZE
+                        Define the batch size used for genomics DB. (default:
+                        100)
+  -lo LOG_FILE, --log_file LOG_FILE
+                        Indicate the file path of the log file. (default:
+                        BarGenotype.log)
+  -gv, --GVCF           VCF files will be generated in ERC mode and outputted
+                        to a SNP database. (default: True)
+  -ba, --bamout         If applied, realigned BAM files will be saved
+                        (default: False)
+  -db DB_FOLDER, --db_folder DB_FOLDER
+                        Define the name of the database folder. (default:
+                        .GATK_genomics_DB)
+  -ea EMAIL_ADDRESS, --email_address EMAIL_ADDRESS
+                        Indicate personal email address if you want to be
+                        notified when BarGenotype is finished. (default: None)
+  -v, --version         show tool version number and exit
+
+Required arguments:
+  -re REF_FILE, --ref_file REF_FILE
+                        Define the reference file. (default: None)
+  -id INPUT_DIR, --input_dir INPUT_DIR
+                        Define the directory containing BAM files. (default:
+                        None)
+  -od OUT_DIR, --out_dir OUT_DIR
+                        Define the output directory for BAM files. (default:
+                        None)
+  -gr GROUP, --group GROUP
+                        Indicate the group ID. (default: None)
+  -pd PLOIDY, --ploidy PLOIDY
+                        Indicate the ploidy for the group. (default: None)
+  -bf BED_FILE, --bed_file BED_FILE
+                        Input BED file used for SNP calling. (default: None)
+</code></pre>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                                                    Close
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <!-- Button trigger BarHaplotype -->
+                                <button type="button" class="btn btn-outline-danger mx-2 btn-lg" data-toggle="modal"
+                                        data-target="#ModalBarHaplotype">
+                                    BarHaplotype
+                                </button>
+                                <!-- Modal -->
+                                <div class="modal fade bd-example-modal-lg" id="ModalBarHaplotype" tabindex="-1"
+                                     role="dialog"
+                                     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+
+                                    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="BarHaplotype_data">BarHaplotype
+                                                    parameters</h5>
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                            <pre><code class="bash">usage: BarHaplotype [-h] -vf VCF_FILE -id INPUT_DIR -od OUT_DIR -gr GROUP
+                       -pd PLOIDY -bf BED_FILE -re REF_FILE [-su SUFFIX]
+                       [-p PROCESSES] [-ml MIN_READ_LENGTH] [-lo LOG_FILE]
+                       [-ea EMAIL_ADDRESS] [-v]
+
+Description:
+Phase SNP variants for a given VCF file and .BAM files using WhatsHap in parallel.
+All BAM files are down samples, to increase phasing performance.
+Phasing is performed in batches and merged in to a single VCF file.
+After phasing is performed, haplotypes are generated and outputted in the given output format.
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -su SUFFIX, --suffix SUFFIX
+                        Define the suffix of read files. (default: .BWA.bam)
+  -p PROCESSES, --processes PROCESSES
+                        Define the number of parallel processes. (default: 8)
+  -ml MIN_READ_LENGTH, --min_read_length MIN_READ_LENGTH
+                        Define the minimum read length used for down sampling.
+                        (default: 75)
+  -lo LOG_FILE, --log_file LOG_FILE
+                        Indicate the file path of the log file. (default:
+                        BarHaplotype.log)
+  -ea EMAIL_ADDRESS, --email_address EMAIL_ADDRESS
+                        Indicate personal email address if you want to be
+                        notified when BarHaplotype is finished. (default:
+                        None)
+  -v, --version         show tool version number and exit
+
+Required arguments:
+  -vf VCF_FILE, --vcf_file VCF_FILE
+                        Define the VCF file to be phased. (default: None)
+  -id INPUT_DIR, --input_dir INPUT_DIR
+                        Define the directory containing BAM files. (default:
+                        None)
+  -od OUT_DIR, --out_dir OUT_DIR
+                        Define the output directory for BAM files. (default:
+                        None)
+  -gr GROUP, --group GROUP
+                        Indicate the group ID. (default: None)
+  -pd PLOIDY, --ploidy PLOIDY
+                        Indicate the ploidy for the group. (default: None)
+  -bf BED_FILE, --bed_file BED_FILE
+                        Input BED file used for down sampling the reads.
+                        (default: None)
+  -re REF_FILE, --ref_file REF_FILE
+                        Input reference file used for phasing. (default: None)
+
+</code></pre>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                                                    Close
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <!-- Button trigger BarVCF -->
+                                <button type="button" class="btn btn-outline-warning mx-2 btn-lg" data-toggle="modal"
+                                        data-target="#ModalBarVCF">
+                                    BarVCF
+                                </button>
+                                <!-- Modal -->
+                                <div class="modal fade bd-example-modal-lg" id="ModalBarVCF" tabindex="-1"
+                                     role="dialog"
+                                     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+
+                                    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="BarVCF_data">BarVCF
+                                                    parameters</h5>
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                            <pre><code class="bash">usage: BarVCF [-h] -vf VCF_FILE -od OUT_DIR -gr GROUP -pd PLOIDY -bf
+                 BED_FILE [-ph] [-nf] [-mia MIN_ALLELE_FREQ]
+                 [-maa MAX_ALLELE_FREQ] [-mf MIN_SNP_FREQ] [-mq MIN_QUALITY]
+                 [-pf PEDIGREE_FILE] [-mp MAX_PEDIGREE_SNP_ERROR]
+                 [-lo LOG_FILE] [-ea EMAIL_ADDRESS] [-v]
+
+Description:
+Analyse a generated VCF file and create SNP output for Cervus.
+If phased and BED file is given, haplotypes are saved.
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -ph, --phased         If applied, VCF is considered phased and output
+                        haplotypes are stored. (default: False)
+  -nf, --no_filter      If applied, filtering step of SNPs is skipped
+                        completely. (default: False)
+  -mia MIN_ALLELE_FREQ, --min_allele_freq MIN_ALLELE_FREQ
+                        Define the minimum allele frequency for SNP filtering.
+                        (default: 0.001)
+  -maa MAX_ALLELE_FREQ, --max_allele_freq MAX_ALLELE_FREQ
+                        Define the maximum allele frequency for SNP filtering.
+                        (default: 0.85)
+  -mf MIN_SNP_FREQ, --min_snp_freq MIN_SNP_FREQ
+                        Define the minimum frequency for a called SNP being
+                        present across all samples. (default: 0.95)
+  -mq MIN_QUALITY, --min_quality MIN_QUALITY
+                        Define the minimum SNP quality for SNP filtering.
+                        (default: 250)
+  -pf PEDIGREE_FILE, --pedigree_file PEDIGREE_FILE
+                        If applied, SNPs are filtered according to the known
+                        paircross samples. (default: None)
+  -mp MAX_PEDIGREE_SNP_ERROR, --max_pedigree_snp_error MAX_PEDIGREE_SNP_ERROR
+                        Define the maximum error frequency for a SNP across
+                        the paircross samples. Only used when pedigree file is
+                        given. (default: 0.2)
+  -lo LOG_FILE, --log_file LOG_FILE
+                        Indicate the file path of the log file. (default:
+                        BarVCF.log)
+  -ea EMAIL_ADDRESS, --email_address EMAIL_ADDRESS
+                        Indicate personal email address if you want to be
+                        notified when BarVCF is finished. (default: None)
+  -v, --version         show tool version number and exit
+
+Required arguments:
+  -vf VCF_FILE, --vcf_file VCF_FILE
+                        Define the VCF file to be analysed. (default: None)
+  -od OUT_DIR, --out_dir OUT_DIR
+                        Define the output directory for statistics. (default:
+                        None)
+  -gr GROUP, --group GROUP
+                        Indicate the group ID. (default: None)
+  -pd PLOIDY, --ploidy PLOIDY
+                        Indicate the ploidy for the group and input VCF file.
+                        (default: None)
+  -bf BED_FILE, --bed_file BED_FILE
+                        Input BED file used for down sampling the reads.
+                        (default: None)
+
+</code></pre>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                                                    Close
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <!-- Button trigger BarPaternity -->
+                                <button type="button" class="btn btn-outline-info mx-2 btn-lg" data-toggle="modal"
+                                        data-target="#ModalBarPaternity">
+                                    BarPaternity
+                                </button>
+                                <!-- Modal -->
+                                <div class="modal fade bd-example-modal-lg" id="ModalBarPaternity" tabindex="-1"
+                                     role="dialog"
+                                     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+
+                                    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="BarPaternity_data">BarPaternity
+                                                    parameters</h5>
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                            <pre><code class="bash">usage: BarPaternity [-h] -mf MARKER_FILE -of OFFSPRING_FILE -cf
+                       CANDIDATE_FATHERS -od OUT_DIR -gr GROUP
+                       [-gf GENOTYPE_FILE] [-cd CRITICAL_DELTA]
+                       [-pl PAIR_LOD_SCORE] [-td TRIO_DELTA_SCORE]
+                       [-lo LOG_FILE] [-ea EMAIL_ADDRESS] [-v]
+
+Description:
+Perform a paternity analysis on a generated marker file by BarVCF.
+Paternity analysis is performed by Cervus, on the input Offspring and candidate fathers file.
+Generated output is transformed and saved in the output directory.
+If a genotype file is applied, genotypes are added to output file.
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -gf GENOTYPE_FILE, --genotype_file GENOTYPE_FILE
+                        Define the file path to the genotype file. See
+                        Examples/Genotype_file.txt (default: None)
+  -cd CRITICAL_DELTA, --critical_delta CRITICAL_DELTA
+                        Define the critical delta score for Cervus. (default:
+                        95)
+  -pl PAIR_LOD_SCORE, --pair_lod_score PAIR_LOD_SCORE
+                        Define the minimum Pair LOD score for given mother and
+                        resulting father. (default: 0)
+  -td TRIO_DELTA_SCORE, --trio_delta_score TRIO_DELTA_SCORE
+                        Define the minimum Trio DELTA score for offspring,
+                        given mother and resulting father. (default: 0)
+  -lo LOG_FILE, --log_file LOG_FILE
+                        Indicate the file path of the log file. (default:
+                        BarPaternity.log)
+  -ea EMAIL_ADDRESS, --email_address EMAIL_ADDRESS
+                        Indicate personal email address if you want to be
+                        notified when BarPaternity is finished. (default:
+                        None)
+  -v, --version         show tool version number and exit
+
+Required arguments:
+  -mf MARKER_FILE, --marker_file MARKER_FILE
+                        Define the marker file generated by BarVCF. See
+                        Examples/Cervus_marker_file.txt (default: None)
+  -of OFFSPRING_FILE, --offspring_file OFFSPRING_FILE
+                        Define the offspring with corresponding Mother sample
+                        file.See Examples/Offspring.txt (default: None)
+  -cf CANDIDATE_FATHERS, --candidate_fathers CANDIDATE_FATHERS
+                        Define the file with candidate fathers.See
+                        Examples/Candidate_fathers.txt (default: None)
+  -od OUT_DIR, --out_dir OUT_DIR
+                        Define the output directory for statistics. (default:
+                        None)
+  -gr GROUP, --group GROUP
+                        Indicate the group ID. (default: None)
+</code></pre>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                                                    Close
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <!-- Button trigger BarGenetic -->
+                                <button type="button" class="btn btn-outline-dark mx-2 btn-lg" data-toggle="modal"
+                                        data-target="#ModalBarGenetic">
+                                    BarGenetic
+                                </button>
+                                <!-- Modal -->
+                                <div class="modal fade bd-example-modal-lg" id="ModalBarGenetic" tabindex="-1"
+                                     role="dialog"
+                                     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+
+                                    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="BarGenetic_data">BarGenetic
+                                                    parameters</h5>
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                            <pre><code class="bash">usage: BarGenetic [-h] -vf VCF_FILE -ba BAR_FILE -od OUT_DIR -gr GROUP -bf
+                     BED_FILE [-mf MARKER_FILE] [-lo LOG_FILE]
+                     [-ea EMAIL_ADDRESS] [-v]
+
+Description:
+Generate genetic distance plots according a generated pedigree and VCF file.
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -mf MARKER_FILE, --marker_file MARKER_FILE
+                        Specify a marker file used for calculating genetic
+                        correlations. If no file is specified marker data is
+                        calculated on the VCF file. (default: None)
+  -lo LOG_FILE, --log_file LOG_FILE
+                        Indicate the file path of the log file. (default:
+                        BarGenetic.log)
+  -ea EMAIL_ADDRESS, --email_address EMAIL_ADDRESS
+                        Indicate personal email address if you want to be
+                        notified when BarGenetic is finished. (default: None)
+  -v, --version         show tool version number and exit
+
+Required arguments:
+  -vf VCF_FILE, --vcf_file VCF_FILE
+                        Define the phased VCF file to be analysed. (default:
+                        None)
+  -ba BAR_FILE, --bar_file BAR_FILE
+                        Define bar file generated by BarPat for pedigree
+                        analysis. (default: None)
+  -od OUT_DIR, --out_dir OUT_DIR
+                        Define the output directory for statistics. (default:
+                        None)
+  -gr GROUP, --group GROUP
+                        Indicate the group ID. (default: None)
+  -bf BED_FILE, --bed_file BED_FILE
+                        Input BED file used for down sampling the reads.
+                        (default: None)
+
+</code></pre>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                                                    Close
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+
+                        </section>
+
+                        <section id="versions-section" class="doc-section">
+                            <h2 class="section-title">Version history</h2>
+
+                            <div id="chart" class="my-2">
+                            </div>
+
+
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- FOOTER -->
+
+<footer id="footer" class="footer text-center">
+    <div class="container">
+        <!--/* This template is free as long as you keep the footer attribution link. If you'd like to use the template without the attribution link, you can buy the commercial license via our website: themes.3rdwavemedia.com Thank you for your support. :) */-->
+        <small class="copyright">Documentation made <i class="fas fa-smile"></i> by <a
+                href="https://elcovrijswijk.github.io/" target="_blank">Elco van Rijswijk</a></small>
+
+    </div>
+</footer>
+
+
+<!-- Main Javascript -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+
+<script type="text/javascript" src="assets/js/main.js"></script>
+<script type="text/javascript" src="assets/js/version_graph.js"></script>
+
+
+</body>
+</html>
+
