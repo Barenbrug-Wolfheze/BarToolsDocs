@@ -82,8 +82,8 @@
     <div class="doc-wrapper  my-5">
         <div class="container">
             <div id="doc-header" class="doc-header">
-                <h1 class="doc-title"><i class="icon fa fa-paper-plane"></i> v1.0</h1>
-                <div class="meta"><i class="far fa-clock"></i> Last updated: Jun, 1 2021</div>
+                <h1 class="doc-title"><i class="icon fa fa-paper-plane"></i> v1.1</h1>
+                <div class="meta"><i class="far fa-clock"></i> Last updated: Feb, 22 2022</div>
             </div>
             <div class="doc-body row">
                 <div class="doc-content col-md-12 col-12 order-1">
@@ -172,7 +172,6 @@ optional arguments:
   -ea EMAIL_ADDRESS, --email_address EMAIL_ADDRESS
                         Indicate personal email address if you want to be
                         notified when BarQC is finished. (default: None)
-  -v, --version         show tool version number and exit
 
 Required arguments:
   -ss File, --sample_sheet File
@@ -220,9 +219,9 @@ Required arguments:
                                             </div>
                                             <div class="modal-body">
                                             <pre><code class="bash">usage: BarMapping [-h] -re REF_FILE -id INPUT_DIR -od OUT_DIR -gr GROUP
-                     [-su SUFFIX] [-pr PROCESSES] [-lo LOG_FILE]
-                     [-bf BED_FILE] [-pa] [-st] [-pl] [-ss]
-                     [-sd STATS_OUT_DIR] [-ea EMAIL_ADDRESS] [-v]
+                     [-su SUFFIX] [-qf QUALITY_FILTER] [-lo LOG_FILE]
+                     [-bf BED_FILE] [-sd STATS_OUT_DIR] [-pr PROCESSES]
+                     [-ea EMAIL_ADDRESS] [-v]
 
 Description:
 Map fq/FASTQ read data to a given reference file using BWA MEM in parallel.
@@ -233,30 +232,23 @@ optional arguments:
   -h, --help            show this help message and exit
   -su SUFFIX, --suffix SUFFIX
                         Define the suffix of read files. (default: .fq.gz)
-  -pr PROCESSES, --processes PROCESSES
-                        Define the amount of parallel processes. (default: 8)
+  -qf QUALITY_FILTER, --quality_filter QUALITY_FILTER
+                        Indicate the quality filtering used for SamTools.
+                        (default: 20)
   -lo LOG_FILE, --log_file LOG_FILE
                         Indicate the file path of the log file. (default:
                         BarMapping.log)
   -bf BED_FILE, --bed_file BED_FILE
                         Define the file path to the BED file of pre-defined
                         regions. (default: None)
-  -pa, --paired         Map reads in paired end mode, make sure files have
-                        correct _F.suffix or _R.suffix. UNFINISHED
-                        (default: False)
-  -st, --statistics     Store statistics in the output/stats directory.
-                        (default: False)
-  -pl, --plots          Generate plots and store in the output/stats
-                        directory. (default: False)
-  -ss, --save_storage   Remove the Q20 directories, for storage
-                        savings.UNFINISHED (default: False)
   -sd STATS_OUT_DIR, --stats_out_dir STATS_OUT_DIR
                         Define the output directory for mapping statistics or
                         plots. (default: None)
+  -pr PROCESSES, --processes PROCESSES
+                        Define the amount of parallel processes. (default: 8)
   -ea EMAIL_ADDRESS, --email_address EMAIL_ADDRESS
                         Indicate personal email address if you want to be
                         notified when BarMapping is finished. (default: None)
-  -v, --version         show tool version number and exit
 
 Required arguments:
   -re REF_FILE, --ref_file REF_FILE
@@ -269,6 +261,7 @@ Required arguments:
                         None)
   -gr GROUP, --group GROUP
                         Indicate the group ID. (default: None)
+
 </code></pre>
                                             </div>
                                             <div class="modal-footer">
@@ -304,13 +297,14 @@ Required arguments:
                                             <div class="modal-body">
                                             <pre><code class="bash">usage: BarGenotype [-h] -re REF_FILE -id INPUT_DIR -od OUT_DIR -gr GROUP
                       -pd PLOIDY -bf BED_FILE [-su SUFFIX] [-m MEMORY]
-                      [-p PROCESSES] [-bs BATCH_SIZE] [-lo LOG_FILE] [-gv]
-                      [-ba] [-db DB_FOLDER] [-ea EMAIL_ADDRESS] [-v]
+                      [-p PROCESSES] [-bs BATCH_SIZE] [-lo LOG_FILE] [-ba]
+                      [-ea EMAIL_ADDRESS] [-v]
 
 Description:
-BarGenotype BAM files using GATK HaplotypeCaller.
-After genotyping GenomicsDB is used to generate one VCF file for all samples.
-Finally SelectVariants is applied, to remove INDELS and low quality SNPs.
+Genotype BAM files using GATK HaplotypeCaller in parallel.
+After genotyping GenomicsDB is used to add batches of file to a single DB.
+Finally a consensus VCF file is generated of all found SNPs across the samples.
+This file can be filtered using BarVCF.
 
 optional arguments:
   -h, --help            show this help message and exit
@@ -326,17 +320,11 @@ optional arguments:
   -lo LOG_FILE, --log_file LOG_FILE
                         Indicate the file path of the log file. (default:
                         BarGenotype.log)
-  -gv, --GVCF           VCF files will be generated in ERC mode and outputted
-                        to a SNP database. (default: True)
   -ba, --bamout         If applied, realigned BAM files will be saved
                         (default: False)
-  -db DB_FOLDER, --db_folder DB_FOLDER
-                        Define the name of the database folder. (default:
-                        .GATK_genomics_DB)
   -ea EMAIL_ADDRESS, --email_address EMAIL_ADDRESS
                         Indicate personal email address if you want to be
                         notified when BarGenotype is finished. (default: None)
-  -v, --version         show tool version number and exit
 
 Required arguments:
   -re REF_FILE, --ref_file REF_FILE
@@ -353,6 +341,7 @@ Required arguments:
                         Indicate the ploidy for the group. (default: None)
   -bf BED_FILE, --bed_file BED_FILE
                         Input BED file used for SNP calling. (default: None)
+
 </code></pre>
                                             </div>
                                             <div class="modal-footer">
@@ -413,7 +402,6 @@ optional arguments:
                         Indicate personal email address if you want to be
                         notified when BarHaplotype is finished. (default:
                         None)
-  -v, --version         show tool version number and exit
 
 Required arguments:
   -vf VCF_FILE, --vcf_file VCF_FILE
@@ -433,7 +421,6 @@ Required arguments:
                         (default: None)
   -re REF_FILE, --ref_file REF_FILE
                         Input reference file used for phasing. (default: None)
-
 </code></pre>
                                             </div>
                                             <div class="modal-footer">
@@ -468,19 +455,18 @@ Required arguments:
                                             </div>
                                             <div class="modal-body">
                                             <pre><code class="bash">usage: BarVCF [-h] -vf VCF_FILE -od OUT_DIR -gr GROUP -pd PLOIDY -bf
-                 BED_FILE [-ph] [-nf] [-mia MIN_ALLELE_FREQ]
-                 [-maa MAX_ALLELE_FREQ] [-mf MIN_SNP_FREQ] [-mq MIN_QUALITY]
-                 [-pf PEDIGREE_FILE] [-mp MAX_PEDIGREE_SNP_ERROR]
-                 [-lo LOG_FILE] [-ea EMAIL_ADDRESS] [-v]
+                 BED_FILE [-nf] [-mia MIN_ALLELE_FREQ] [-maa MAX_ALLELE_FREQ]
+                 [-mf MIN_SNP_FREQ] [-mq MIN_QUALITY] [-pf PEDIGREE_FILE]
+                 [-mp MAX_PEDIGREE_SNP_ERROR] [-lo LOG_FILE]
+                 [-ea EMAIL_ADDRESS] [-v]
 
 Description:
-Analyse a generated VCF file and create SNP output for Cervus.
-If phased and BED file is given, haplotypes are saved.
+Analyse a generated VCF file and create SNP output for Cervus or Genomic Selection.
+If a pedigree file is given, SNPs are filtered according a ratio of a marker being correct
+given the offspring, mother & father sample.
 
 optional arguments:
   -h, --help            show this help message and exit
-  -ph, --phased         If applied, VCF is considered phased and output
-                        haplotypes are stored. (default: False)
   -nf, --no_filter      If applied, filtering step of SNPs is skipped
                         completely. (default: False)
   -mia MIN_ALLELE_FREQ, --min_allele_freq MIN_ALLELE_FREQ
@@ -501,14 +487,13 @@ optional arguments:
   -mp MAX_PEDIGREE_SNP_ERROR, --max_pedigree_snp_error MAX_PEDIGREE_SNP_ERROR
                         Define the maximum error frequency for a SNP across
                         the paircross samples. Only used when pedigree file is
-                        given. (default: 0.2)
+                        given. (default: 0.1)
   -lo LOG_FILE, --log_file LOG_FILE
                         Indicate the file path of the log file. (default:
                         BarVCF.log)
   -ea EMAIL_ADDRESS, --email_address EMAIL_ADDRESS
                         Indicate personal email address if you want to be
                         notified when BarVCF is finished. (default: None)
-  -v, --version         show tool version number and exit
 
 Required arguments:
   -vf VCF_FILE, --vcf_file VCF_FILE
@@ -566,9 +551,10 @@ Required arguments:
 
 Description:
 Perform a paternity analysis on a generated marker file by BarVCF.
-Paternity analysis is performed by Cervus, on the input Offspring and candidate fathers file.
+Paternity analysis is performed by Cervus, on the input offspring and candidate fathers file.
 Generated output is transformed and saved in the output directory.
 If a genotype file is applied, genotypes are added to output file.
+In addition, a maternal check is applied to detect selfings or wrong sampled mothers.
 
 optional arguments:
   -h, --help            show this help message and exit
@@ -591,7 +577,6 @@ optional arguments:
                         Indicate personal email address if you want to be
                         notified when BarPaternity is finished. (default:
                         None)
-  -v, --version         show tool version number and exit
 
 Required arguments:
   -mf MARKER_FILE, --marker_file MARKER_FILE
@@ -641,31 +626,26 @@ Required arguments:
                                                 </button>
                                             </div>
                                             <div class="modal-body">
-                                            <pre><code class="bash">usage: BarGenetic [-h] -vf VCF_FILE -ba BAR_FILE -od OUT_DIR -gr GROUP -bf
-                     BED_FILE [-mf MARKER_FILE] [-lo LOG_FILE]
-                     [-ea EMAIL_ADDRESS] [-v]
+                                            <pre><code class="bash">usage: BarGenetic [-h] -mf MARKER_FILE -ba BAR_FILE -od OUT_DIR -gr GROUP
+                     [-lo LOG_FILE] [-ea EMAIL_ADDRESS] [-v]
 
 Description:
-Generate genetic distance plots according a generated pedigree and VCF file.
+Generate genetic distance plots according a marker file from BarVCF
+& .bar file generated by BarPaternity.
 
 optional arguments:
   -h, --help            show this help message and exit
-  -mf MARKER_FILE, --marker_file MARKER_FILE
-                        Specify a marker file used for calculating genetic
-                        correlations. If no file is specified marker data is
-                        calculated on the VCF file. (default: None)
   -lo LOG_FILE, --log_file LOG_FILE
                         Indicate the file path of the log file. (default:
-                        BarGenetic.log)
+                        BarGenetic_tool.log)
   -ea EMAIL_ADDRESS, --email_address EMAIL_ADDRESS
                         Indicate personal email address if you want to be
                         notified when BarGenetic is finished. (default: None)
-  -v, --version         show tool version number and exit
 
 Required arguments:
-  -vf VCF_FILE, --vcf_file VCF_FILE
-                        Define the phased VCF file to be analysed. (default:
-                        None)
+  -mf MARKER_FILE, --marker_file MARKER_FILE
+                        Specify a marker file either _ceruvs or _AF file from
+                        BarVCF. (default: None)
   -ba BAR_FILE, --bar_file BAR_FILE
                         Define bar file generated by BarPat for pedigree
                         analysis. (default: None)
@@ -674,10 +654,6 @@ Required arguments:
                         None)
   -gr GROUP, --group GROUP
                         Indicate the group ID. (default: None)
-  -bf BED_FILE, --bed_file BED_FILE
-                        Input BED file used for down sampling the reads.
-                        (default: None)
-
 </code></pre>
                                             </div>
                                             <div class="modal-footer">

@@ -5,11 +5,18 @@ var options = {
 
 
             data: [
+                {
+                x: 'v1.1',
+                y: [
+                  new Date('2022-2-22').getTime(),
+                  new Date().getTime()
+                ]
+              },
               {
                 x: 'v1.0',
                 y: [
                   new Date('2021-6-01').getTime(),
-                  new Date().getTime()
+                  new Date('2022-2-22').getTime()
                 ]
               },
               {
