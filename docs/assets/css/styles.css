@@ -8,6 +8,23 @@
  * Website: http://themes.3rdwavemedia.com/
 */
 /* ======= Base ======= */
+
+pre[class*="language-"] {
+  position: relative;
+  margin: 5px 0 ;
+  padding: 1.75rem 0 1.75rem 1rem;
+
+  /* more stuff */
+}
+
+pre[class*="language-"] button{
+  position: absolute;
+  top: 5px;
+  right: 5px;
+
+  /* more stuff */
+}
+
 body {
   font-family: 'Open Sans', arial, sans-serif;
   color: #494d55;
@@ -41,7 +58,7 @@ p {
 }
 
 a {
-  color: #3aa7aa;
+  color: #358CCBFF;
   -webkit-transition: all 0.4s ease-in-out;
   -moz-transition: all 0.4s ease-in-out;
   -ms-transition: all 0.4s ease-in-out;
@@ -50,7 +67,7 @@ a {
 
 a:hover {
   text-decoration: underline;
-  color: #339597;
+  color: #358CCBFF;
 }
 
 a:focus {
@@ -91,15 +108,15 @@ code {
 }
 
 .btn-primary, a.btn-primary {
-  background: #40babd;
-  border: 1px solid #40babd;
+  background: #358CCBFF;
+  border: 1px solid #358CCBFF;
   color: #fff !important;
 }
 
 .btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .btn-primary.hover, .btn-primary:not(:disabled):not(.disabled):active:focus, a.btn-primary:hover, a.btn-primary:focus, a.btn-primary:active, a.btn-primary.active, a.btn-primary.hover, a.btn-primary:not(:disabled):not(.disabled):active:focus {
-  background: #3aa7aa;
+  background: #358CCBFF;
   color: #fff !important;
-  border: 1px solid #3aa7aa;
+  border: 1px solid #358CCBFF;
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
   box-shadow: none;
@@ -126,15 +143,15 @@ code {
 }
 
 .btn-blue, a.btn-blue {
-  background: #58bbee;
-  border: 1px solid #58bbee;
+  background: #358CCBFF;
+  border: 1px solid #358CCBFF;
   color: #fff !important;
 }
 
 .btn-blue:hover, .btn-blue:focus, .btn-blue:active, .btn-blue.active, .btn-blue.hover, a.btn-blue:hover, a.btn-blue:focus, a.btn-blue:active, a.btn-blue.active, a.btn-blue.hover {
-  background: #41b2ec;
+  background: #358CCBFF;
   color: #fff !important;
-  border: 1px solid #41b2ec;
+  border: 1px solid #358CCBFF;
 }
 
 .btn-orange, a.btn-orange {
@@ -249,7 +266,7 @@ select {
 .header {
   background: #494d55;
   color: rgba(255, 255, 255, 0.85);
-  border-top: 5px solid #40babd;
+  border-top: 5px solid #358CCBFF;
   padding: 30px 0;
 }
 
@@ -277,7 +294,7 @@ select {
 }
 
 .branding .text-highlight {
-  color: #40babd;
+  color: #358CCBFF;
 }
 
 .body-green .branding .text-highlight {
@@ -285,7 +302,7 @@ select {
 }
 
 .body-blue .branding .text-highlight {
-  color: #58bbee;
+  color: #358CCBFF;
 }
 
 .body-orange .branding .text-highlight {
@@ -311,7 +328,7 @@ select {
 
 .branding .icon {
   font-size: 24px;
-  color: #40babd;
+  color: #358CCBFF;
 }
 
 .body-green .branding .icon {
@@ -319,7 +336,7 @@ select {
 }
 
 .body-blue .branding .icon {
-  color: #58bbee;
+  color: #358CCBFF;
 }
 
 .body-orange .branding .icon {
@@ -414,7 +431,7 @@ select {
 }
 
 .footer a {
-  color: #40babd;
+  color: #358CCBFF;
 }
 
 .footer .fa-heart {
@@ -444,7 +461,7 @@ select {
 }
 
 .doc-header .doc-title {
-  color: #40babd;
+  color: #358CCBFF;
   margin-top: 0;
   font-size: 36px;
 }
@@ -931,7 +948,7 @@ select {
 
 .doc-menu .nav-link.active {
   background: none;
-  color: #40babd;
+  color: #358CCBFF;
   font-weight: 600;
 }
 
@@ -996,7 +1013,7 @@ select {
 
 .doc-sub-menu .nav-link.active {
   background: none;
-  color: #40babd;
+  color: #358CCBFF;
 }
 
 .body-green .doc-sub-menu .nav-link.active {
@@ -1238,7 +1255,7 @@ select {
 
 .landing-page .branding .icon {
   font-size: 32px;
-  color: #40babd;
+  color: #358CCBFF;
 }
 
 .landing-page .tagline {
@@ -1354,7 +1371,7 @@ select {
 }
 
 .cards-section .item-primary .item-inner {
-  border-top: 3px solid #40babd;
+  border-top: 3px solid #358CCBFF;
 }
 
 .cards-section .item-primary .item-inner:hover .title {
@@ -1362,7 +1379,7 @@ select {
 }
 
 .cards-section .item-primary .icon {
-  color: #40babd;
+  color: #358CCBFF;
 }
 
 .cards-section .item-green .item-inner {
@@ -1633,3 +1650,4 @@ select {
   }
 
 }
+
